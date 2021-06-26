@@ -7,13 +7,19 @@ namespace RabbitMQ.Wrapper
 {
     public class RabbitService:IDisposable
     {
-        private ConnectionFactory factory = new ConnectionFactory() { HostName = "localhost" };
+        private ConnectionFactory factory;
         private IModel model;
         private IConnection connection;
-        public void ListenQueue(string queue, Action<string> GetMessage)
+
+        private void Inizialize()
         {
+            factory = new ConnectionFactory() { HostName = "localhost" };
             connection = factory.CreateConnection();
             model = connection.CreateModel();
+        }
+        public void ListenQueue(string queue, Action<string> GetMessage)
+        {
+            Inizialize();
             model.ExchangeDeclare("ping-pong", ExchangeType.Direct);
 
             model.QueueDeclare(queue, autoDelete: false, exclusive: false);
@@ -32,10 +38,15 @@ namespace RabbitMQ.Wrapper
             var consumer = model.BasicConsume(queue, true, consumeEvent);
         }
 
+        public bool IsEmptyQueue(string queue)
+        {
+            Inizialize();
+            return model.QueueDeclare(queue, autoDelete: false, exclusive: false).MessageCount == 0;
+        }
+
         public void SendMessageToQueue(string message, string key)
         {
-            connection = factory.CreateConnection();
-            model = connection.CreateModel();
+            Inizialize();
 
             model.ExchangeDeclare("ping-pong", ExchangeType.Direct);
             
