@@ -9,3 +9,4 @@ D:\BSAStudy\BSA_Task2\BSA_Task2\RabbitMQ.Wrapper\obj\Debug\net5.0\RabbitMQ.Wrapp
 D:\BSAStudy\BSA_Task2\BSA_Task2\RabbitMQ.Wrapper\obj\Debug\net5.0\RabbitMQ.Wrapper.dll
 D:\BSAStudy\BSA_Task2\BSA_Task2\RabbitMQ.Wrapper\obj\Debug\net5.0\ref\RabbitMQ.Wrapper.dll
 D:\BSAStudy\BSA_Task2\BSA_Task2\RabbitMQ.Wrapper\obj\Debug\net5.0\RabbitMQ.Wrapper.pdb
+D:\BSAStudy\BSA_Task2\BSA_Task2\RabbitMQ.Wrapper\obj\Debug\net5.0\RabbitMQ.Wrapper.csproj.AssemblyReference.cache

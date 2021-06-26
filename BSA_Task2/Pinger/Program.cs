@@ -10,13 +10,13 @@ namespace Pinger
         private static RabbitService service = new RabbitService();
         static void Main(string[] args)
         {
-            service.SendMessageToQueue("ping", "ping");
-            service.ListenQueue("pong", (mess) =>
+            service.SendMessageToQueue("pong", "pong");
+            service.ListenQueue("ping", (mess) =>
             {
                 Console.WriteLine("Message came:"+ mess + "--" + DateTime.Now);
                 Thread.Sleep(5000);
                 string sendedMessage = "ping" + random.Next(-1000, -1);
-                service.SendMessageToQueue(sendedMessage, "ping");
+                service.SendMessageToQueue(sendedMessage, "pong");
                 Console.WriteLine($"Message sended:{sendedMessage}\n");
             });
             Console.ReadLine();
